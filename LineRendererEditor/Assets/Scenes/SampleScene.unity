@@ -142,8 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5063d4a883ad49146b9cf396151da53e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sides: 11
-  Radius: 3
+  DrawEditorCircle: 1
+  Sides: 10
+  Radius: 4.634967
   Width: 3
 --- !u!120 &103388508
 LineRenderer:
