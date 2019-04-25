@@ -5,11 +5,8 @@ using UnityEngine.Assertions;
 public class LineRendererWindow : EditorWindow
 {
     LineRenderer MyLineRenderer;
-    int Sides = 0;
-    float Radius = 1;
-    float Width = 1;
 
-    [MenuItem("Custom/Shape Editor")]
+    [MenuItem("Window/Custom/Shape Editor")]
     static void Init()
     {
         LineRendererWindow window = (LineRendererWindow)GetWindow(typeof(LineRendererWindow));
