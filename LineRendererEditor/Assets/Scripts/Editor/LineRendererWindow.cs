@@ -17,22 +17,28 @@ public class LineRendererWindow : EditorWindow
     {
         GUILayout.Label("Base Settings", EditorStyles.boldLabel);
         MyLineRenderer = (LineRenderer)EditorGUILayout.ObjectField(MyLineRenderer, typeof(LineRenderer), true);
-        CustomLineRenderer Selected = MyLineRenderer.GetComponent<CustomLineRenderer>();
-        Assert.IsNotNull(Selected, "Object have no Custom Line Renderer");
-
-        EditorGUILayout.Separator();
-        EditorGUI.BeginChangeCheck();
-        Selected.Sides = EditorGUILayout.IntSlider("Sides", Selected.Sides, 3, 100);
-        Selected.Radius = EditorGUILayout.Slider("Radius", Selected.Radius, 0, 100);
-        Selected.Width = EditorGUILayout.Slider("Width", Selected.Width, 0, 100);
-        if(EditorGUI.EndChangeCheck())
+        if(MyLineRenderer)
         {
-            Undo.RecordObject(Selected, "Changed LineRenderer Variables through scene");
-            if (EditorApplication.isPlaying)
+            CustomLineRenderer Selected = MyLineRenderer.GetComponent<CustomLineRenderer>();
+            Assert.IsNotNull(Selected, "Object have no Custom Line Renderer");
+
+            EditorGUILayout.Separator();
+
+            EditorGUI.BeginChangeCheck();
+            Selected.Sides = EditorGUILayout.IntSlider("Sides", Selected.Sides, 3, 100);
+            Selected.Radius = EditorGUILayout.Slider("Radius", Selected.Radius, 0, 100);
+            Selected.Width = EditorGUILayout.Slider("Width", Selected.Width, 0, 100);
+            if(EditorGUI.EndChangeCheck())
             {
-                Selected.CreatePoints();
+                Undo.RecordObject(Selected, "Changed LineRenderer Variables through scene");
+                if (EditorApplication.isPlaying)
+                {
+                    Selected.CreatePoints();
+                }
             }
+            //This is just for updating the actual variables in the editor window (should be more optimized for actual use)
+            Repaint();
         }
-        Repaint();
+
     }
 }

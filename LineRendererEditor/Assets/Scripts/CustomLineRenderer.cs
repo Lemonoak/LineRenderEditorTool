@@ -33,7 +33,7 @@ public class CustomLineRenderer : MonoBehaviour
         for (int i = 0; i < Render.positionCount; i++)
         {
             Vector3 SidesPosition = new Vector3(Radius * Mathf.Cos(Theta), Radius * Mathf.Sin(Theta), 0.0f);
-            Render.SetPosition(i, SidesPosition + transform.position);
+            Render.SetPosition(i, SidesPosition);
             Theta += DeltaTheta;
         }
     }
@@ -45,7 +45,6 @@ public class CustomLineRenderer : MonoBehaviour
         if(DrawEditorCircle)
         {
             float DeltaTheta = (Mathf.PI * 2.0f) / Sides;
-
             float Theta = 0.0f;
 
             Vector3 OldPos = Vector3.zero;
