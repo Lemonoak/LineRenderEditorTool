@@ -10,7 +10,7 @@ public class LineRenderEditor : Editor
         CustomLineRenderer Selected = (CustomLineRenderer)target;
 
         EditorGUI.BeginChangeCheck();
-        Selected.Sides = (int)EditorGUILayout.Slider("Sides", Selected.Sides, 0, 100);
+        Selected.Sides = (int)EditorGUILayout.Slider("Sides", Selected.Sides, 3, 100);
         Selected.Radius = EditorGUILayout.Slider("Radius", Selected.Radius, 0, 100);
         Selected.Width = EditorGUILayout.Slider("Width", Selected.Width, 0, 100);
         Selected.DrawEditorCircle = EditorGUILayout.Toggle("Show Gizmo Circle", Selected.DrawEditorCircle);
